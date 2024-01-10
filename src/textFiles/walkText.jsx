@@ -1,3 +1,4 @@
+// Simple array of text values for the visualisation
 const walkText = [
         "Hey guys! Today we will look at everything to do with hooks that we have learned so far! I will be discussing this as we go through and feel free to ask questions along the way! The repo will be a handy reference for you in the future. Click on this text to advance the instructions.",
         "We use useState to INITIALIZE a variable that we want to change, in other words, the initial STATE of a variable. Our initial state, is this pokemon, Charmander! Click 'evolve' to continue.",
@@ -6,4 +7,5 @@ const walkText = [
         "You are so evil! Charmander and its evolutions die if their flames are extingushed! But notice that everything triggered separately, and depending on various states and conditionals, we will dive into this further in the code!"
 ];
 
+// export our walkthrough text!
 export default walkText;

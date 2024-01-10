@@ -1,8 +1,13 @@
-# React + Vite
+# State and Hooks Tutorial / Walkthrough
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project was created to help support peers in their learning of hooks and state within React.JS
 
-Currently, two official plugins are available:
+Tailored towards the group, can be used as a reference sheet, though is created with a zoom lesson/walthrough in mind.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tech Stack
+
+HTML, CSS, JS, TailwindCSS, React.JS
+
+## Other Info
+
+Contact via github @Jaycossey for support

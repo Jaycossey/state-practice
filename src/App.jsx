@@ -1,7 +1,7 @@
 /**
  * HI ALL!!! Welcome to our tutorial on hooks, this codebase is here for your reference, I will start 
  * by simply changing state depending on conditionals and how far along we are, I havent taken edge cases
- * or error handling into effect, so make sure you are reading everything on screen, if anything goes wrong,
+ * or error handling into account, so make sure you are reading everything on screen, if anything goes wrong,
  * simply click "RESET" at the bottom of the screen. 
  * 
  * As this was created to discuss with a group, I have kept the comments as informative as I can but also trying 
