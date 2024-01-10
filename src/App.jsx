@@ -31,11 +31,13 @@ import useWaterGun from './utils/useWaterGun';
 // destructure the list into the respective pokemon
 const { charmander, charmeleon, charizard } = pokeList;
 
-// variable to track walkthrough steps
-let walkthroughCounter = 0;
+// variable to track walkthrough steps <<<------- IMPORTANT!!!! THIS IS POOR NAMING CONVENTION, IM JUST LAZY!!
+let i = 0;
 
 // app function declaration, setup via create vite@latest
 function App() {
+
+  // STATE INITIALIZERS -------------------------------------------------<>
 
   // Our useState initialization, using array destructuring to declare a variable (pokemon)
   // and declaring our SET methods (setPokemon)
@@ -45,55 +47,73 @@ function App() {
   // pokemon state
   const [pokemon, setPokemon] = useState(charmander);
   // walkthrough text state
-  const [walkthrough, setWalkthrough] = useState(walkText[walkthroughCounter]);
+  const [walkthrough, setWalkthrough] = useState(walkText[i]);
   // button text state
   const [buttonText, setButtonText] = useState('Evolve');
 
-  // useEffect handler, 2 params, callback and state listener
+  // useEffect handler, 2 params, callback and state listener this effect will trigger on pokemon state changes.
   useEffect(() => {
-    let newPokeState = useWaterGun(pokemon, buttonText);
+    // this use effect hook, tracks pokemon evolutions, it will trigger text changes for the walkthrough
 
-    setPokemon(newPokeState);
+    // switch case for each pokemon
+    switch(pokemon.name) {
+      case 'Charmander':
+        i++;
+        setWalkthrough(walkText[i]);
+        break;
+      case 'Charmeleon':
+        i++;
+        setWalkthrough(walkText[i]);
+        break;
+      case 'Charizard':
+        i++;
+        setWalkthrough(walkText[i]);
+        setButtonText('useWaterGun');
+        break;
+      default:
+        return;
+    }
+    console.log(`should be ++`, i);
   }, [pokemon])
+
+  // WALKTHROUGH TEXT HANDLERS ------------------------------------------<>
+
+  // custom onclick handler to determine walkthrough text on intro
+  const handleIntroTextClick = () => {
+    if (i > 0) return;
+    i++;
+    console.log('step 1, should be 1: ', i);
+    setWalkthrough(walkText[i]);
+  }
+
+  // STATE CHANGES (EVOLVE) -----------------------------------------------<>
 
   // click handler to determine pokemon evolution, or STATE changes
   const handleEvolutionClick = () => {
-    // if statement to find current state
+    // if statement to find current state and ensure steps arent missed
     if (pokemon.name === 'Charmander') {
-      // update tutorial counter
-      walkthroughCounter++;
-
-      // set new pokemon and walkthrough states
+       // set new pokemon state
       setPokemon(charmeleon);
-      setWalkthrough(walkText[walkthroughCounter]);
     
     // update dependant on what pokemon came before.
     } else if ( pokemon.name === 'Charmeleon') {
-      walkthroughCounter++;
+      // set new pokemon
       setPokemon(charizard);
-      setWalkthrough(walkText[walkthroughCounter]);
-    } else {
-      walkthroughCounter++;
-      setWalkthrough(walkText[walkthroughCounter]);
+    } else if (pokemon.name === 'Charizard') {
+      let newPoke = useWaterGun();
+      setPokemon(newPoke);
     }
 
-    // If at correct stage, change button text
-    if (walkthroughCounter === 3) {
-      setButtonText('Use WaterGun!')
-    }
   }
 
-  // custom onclick handler to determine walkthrough text
-  const handleIntroTextClick = () => {
-    walkthroughCounter++;
-    setWalkthrough(walkText[walkthroughCounter]);
-    // removeEventListener('click');
-  }
+  // RESET TUTORIAL -------------------------------------------------------<>
 
   // reset walkthrough to initial state values
   const reset = () => {
     setPokemon(charmander);
-    setWalkthrough(walkText[0]);
+    i = 0;
+    console.log("reset, should be 0:", i);
+    setWalkthrough(walkText[i]);
     setButtonText('Evolve');
   }
 

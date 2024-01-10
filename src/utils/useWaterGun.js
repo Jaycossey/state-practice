@@ -21,7 +21,7 @@
  * 
  */
 
-const useWaterGun = (pokemon, buttonText) => {
+const useWaterGun = () => {
 
     // you know this already
     const deadPokemon = {
@@ -30,14 +30,8 @@ const useWaterGun = (pokemon, buttonText) => {
         text: 'Its dead, you killed it.'
     }
     
-    // let's make sure we only target charizard, dont wanna kill the little ones now do we?
-    // if the pokemon isnt our intended target, we return from this, end the function before 
-    // executing further code, keep it efficient! 
-    if (pokemon !== 'Charizard' && buttonText !== 'Use WaterGun!') {
-        console.log("useCustom tick");
-        return pokemon;
-    } 
-
+    // return the results of your actions 
+    return deadPokemon;
 }
 
 export default useWaterGun;
